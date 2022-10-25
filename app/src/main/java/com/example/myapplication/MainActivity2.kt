@@ -9,7 +9,7 @@ class MainActivity2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
 
-        val real:TextView = findViewById(R.id.realrez)
+        val real:TextView = findViewById(R.id.realres)
         val lastrez = intent.getStringExtra("results")
         real.text = lastrez
     }

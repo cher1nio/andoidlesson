@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
        val btn_clearly: Button = findViewById(R.id.btn_clear)
        val number:EditText = findViewById(R.id.numbers)
-       val rez:TextView = findViewById(R.id.numbers_rez)
+       val rez:TextView = findViewById(R.id.numbers_res)
 
         val plus:Button = findViewById(R.id.btn_plus)
         val minus:Button = findViewById(R.id.btn_minus)
@@ -32,10 +32,10 @@ class MainActivity : AppCompatActivity() {
         var x: Int = 0
 
         plus.setOnClickListener{
-            if(rez.text.isEmpty()) {
+            if(rez.text.isEmpty()) {              // Якщо поле результату пусте тоді нове введене число виставляється як перший доданок
                 firstnumber = number.text.toString().toDouble()
             }
-            number.text.clear()
+            number.text.clear()                    // Очистка поля нового введеного числа
             x = 1
        }
         minus.setOnClickListener{
@@ -60,9 +60,9 @@ class MainActivity : AppCompatActivity() {
             x = 4
         }
         equal.setOnClickListener{
-            secondnumber = number.text.toString().toDouble()
+            secondnumber = number.text.toString().toDouble()  //Друге введене число є нашим другим доданком
             when(x){
-                1 -> rezult = firstnumber + secondnumber
+                1 -> rezult = firstnumber + secondnumber       //Операція в залежності від нажатої кнопки
                 2 -> rezult = firstnumber - secondnumber
                 3 -> rezult = firstnumber * secondnumber
                 4 -> rezult = firstnumber / secondnumber
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
             firstnumber = rezult
 
             val LongRes = rezult.toLong()
-            if (rezult == LongRes.toDouble())
+            if (rezult == LongRes.toDouble())        //Вичеслення чи є в нашому результаті числа після крапки
             {
                 rez.text = LongRes.toString()
             }
@@ -83,12 +83,12 @@ class MainActivity : AppCompatActivity() {
 
 
        btn_clearly.setOnClickListener{
-          number.text.clear()
+          number.text.clear()               //Очищення результату і полів
            rez.text = ""
            rezult = 0.0
        }
 
-        switchactivityy.setOnClickListener{
+        switchactivityy.setOnClickListener{     //Перехід на другу Активність і передача результату на другу Активність
             startActivity(Intent(this, MainActivity2::class.java).putExtra("results" , rezult.toString()))
         }
 
